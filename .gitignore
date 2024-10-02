@@ -1,0 +1,6 @@
+# /.env 
+# This file should not be included in production
+/mysql_data
+/vendor
+
+/.DS_Store

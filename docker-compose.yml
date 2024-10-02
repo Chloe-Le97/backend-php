@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  php:
+    build: .  # This tells Docker Compose to use the Dockerfile in the current directory
+    container_name: php-backend
+    env_file:
+      - .env  # Load environment variables from .env file
+    ports:
+      - "8080:80"  # Expose the container on port 8080
+    volumes:
+      - ./src:/var/www/html  # Sync your PHP code with the container
+      - ./vendor:/var/www/vendor  # Sync the vendor directory
+    depends_on:
+      - db  # Wait for MySQL to be ready
+
+  db:
+    image: mysql:latest
+    container_name: mysql-db
+    env_file:  # Use .env file to load environment variables
+      - .env
+    ports:
+      - "3307:3306"  # Map port 3306 for MySQL
+    volumes:
+      - ./mysql_data:/var/lib/mysql  # Persist MySQL data
+    restart: always
