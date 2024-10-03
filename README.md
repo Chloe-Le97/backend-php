@@ -34,28 +34,34 @@ This application fetches data from an external Excel file provided by Alko (the 
 ```bash
 git clone https://github.com/Chloe-Le97/backend-test.git
 cd backend-test
+```
 
 ### 2. Set Environment Variables
-Create a `.env` file in the root directory and populate it with the following:
+Create a `.env` file in the root directory and populate it with the following
 
 ```env
 MYSQL_ROOT_PASSWORD=password
 MYSQL_DATABASE=my_database
 MYSQL_USER=user
 MYSQL_PASSWORD=user_password
+````
 
 ### 3. Build and run Docker containers 
 ```bash
 docker-compose up --no-deps --build
+```
 
 or
 ```bash
 docker compose up --no-deps --build
+```
 
 ### 4. Install PHP dependencies
 ```bash
 composer install
+```
 
 ### 5. Run PHP Script via Command Line (CLI)
 ```bash 
-php inital_data.php
+curl http://localhost:8080/initial_data.php
+```
