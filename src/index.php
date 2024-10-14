@@ -75,13 +75,21 @@
                     data: { number: number, action: 'add' },
                     success: function(response) {
                         // Increment and update the order amount in the UI
-                        $('.order-amount[data-number="' + number + '"]').text(currentAmount + 1);
+                        // $('.order-amount[data-number="' + number + '"]').text(currentAmount + 1);
+
+						// Improvement 
+						var data = JSON.parse(response);
+						
+						if (data.orderamount !== undefined) {
+							$('.order-amount[data-number="' + number + '"]').text(data.orderamount);
+						}
                     },
                     error: function(xhr, status, error) {
                         console.error('Error updating order amount:', error);
                     }
                 });
             });
+
 
             $(document).on('click', '.clearOrder', function() {
                 var number = $(this).data('number');
